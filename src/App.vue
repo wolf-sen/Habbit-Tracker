@@ -1,22 +1,18 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-<div class="dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Check Bootstrap
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-</div>
+  <Navbar />
+
+  <div class="card mx-4 mt-2">
+    <div class="card-body">
+      <div class="card-title">Welcome to the landing page of th myHabitApp Project</div>
+      <div class="card-text">This is a work in progress student project.</div>
+    </div>
+  </div>
+
 </template>
+
+<style>
+</style>
