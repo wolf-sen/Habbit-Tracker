@@ -10,6 +10,9 @@ inject();
 import { injectSpeedInsights } from '@vercel/speed-insights';
 injectSpeedInsights();
 
+//PostgresDB SDK Import
+import { sql } from "@vercel/postgres";
+
 //Bootstrap Initialisation
 import "bootstrap"
 
