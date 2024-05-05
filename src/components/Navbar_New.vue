@@ -5,16 +5,16 @@
 </script>
 
 <template>
-  <nav class="navbar fixed-bottom bg-primary-subtle" data-bs-theme="dark">
-    <div class="fit mx-auto row">
-      <div class="col mx-auto">
-        <button type="button" class="btn btn-outline-primary btn-lg px-4">Profile</button>
+  <nav  class="navbar fixed-bottom bg-primary-subtle">
+    <div class="btn-group row text-center mx-auto">
+      <div class="col ">
+        <a href="https://google.com" class="btn btn-primary btn-sm w-100">Home</a>
       </div>
-      <div class="col mx-auto">
-        <button type="button" class="btn btn-outline-primary btn-lg px-4">Home</button>
+      <div class="col">
+        <a href="" class="btn btn-primary btn-sm w-100">Calendar</a>
       </div>
-      <div class="col mx-auto">
-        <button type="button" class="btn btn-outline-primary btn-lg px-4">Calender</button>
+      <div class="col">
+        <a href="" class="btn btn-primary btn-sm w-100">Profile</a>
       </div>
     </div>
   </nav>
