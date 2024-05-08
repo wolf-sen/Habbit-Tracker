@@ -9,12 +9,16 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
             <img class="d-block w-30" src="..." alt="First slide">
+            <div class="d-block w-30">
+            </div>
             </div>
             <div class="carousel-item">
-            <img class="d-block w-30" src="..." alt="Second slide">
+            <div class="d-block w-30">
+            </div>
             </div>
             <div class="carousel-item">
-            <img class="d-block w-30" src="..." alt="Third slide">
+            <div class="d-block w-30">
+            </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
