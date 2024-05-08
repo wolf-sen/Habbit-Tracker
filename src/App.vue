@@ -1,5 +1,6 @@
 <script setup>
 import Navbar from './components/Navbar.vue';
+import Carousel from './components/carousel.vue';
 </script>
 
 <template>
@@ -11,6 +12,8 @@ import Navbar from './components/Navbar.vue';
       <div class="card-text">This is a work in progress student project.</div>
     </div>
   </div>
+
+  <Carousel />
 
 </template>
 
