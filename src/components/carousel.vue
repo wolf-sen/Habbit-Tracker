@@ -1,150 +1,99 @@
 <script>
-    export default {
-        name: "carousel"
+export default {
+  name: "HabitCarousel",
+  data() {
+    return {
+      habits: [
+        { name: "Exercise", description: "Go for a jog or hit the gym." },
+        { name: "Reading", description: "Read a book for at least 30 minutes." },
+        { name: "Meditation", description: "Take 10 minutes to meditate." }
+      ],
+      activeIndex: 1 // Aktiver Index des Karussells
     };
+  },
+  methods: {
+    removeHabit(index) {
+      this.habits.splice(index, 1);
+      if (index === this.activeIndex && this.habits.length > 0) {
+        if (this.activeIndex === this.habits.length) {
+          this.activeIndex--;
+        }
+      }
+    },
+    goTo(index) {
+      if (index !== this.activeIndex) {
+        this.activeIndex = index;
+      }
+    }
+  }
+};
 </script>
 
 <template>
-<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
-<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="mb-5"></div> <!-- Leere Zeile hinzugefügt -->
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="carousel" ref="carousel">
+            <div v-for="(habit, index) in habits" :key="index" class="habit-wrapper" :class="{ 'active': index === activeIndex, 'inactive': index !== activeIndex }" @click="goTo(index)">
+              <div class="habit rounded p-4 mb-4 position-relative">
+                <div class="habit-content d-flex align-items-center">
+                  <div class="circle-abhacken" @click.stop="removeHabit(index)"></div>
+                  <h2 class="habit-name">{{ habit.name }}</h2>
+                </div>
+                <p class="habit-description">{{ habit.description }}</p>
               </div>
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <div class="mb-5"></div> <!-- Zusätzliche leere Zeile hinzugefügt -->
       </div>
-
+    </div>
+  </div>
 </template>
 
-<style>
-    /* GLOBAL STYLES
-    -------------------------------------------------- */
-    /* Padding below the footer and lighter body text */
-
-    body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    color: #5a5a5a;
-    }
-
-
-    /* CUSTOMIZE THE CAROUSEL
-    -------------------------------------------------- */
-
-    /* Carousel base class */
-    .carousel {
-    margin-bottom: 4rem;
-    }
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-    }
-
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-    height: 32rem;
-    background-color: #777;
-    }
-    .carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
-    }
-
-
-    /* MARKETING CONTENT
-    -------------------------------------------------- */
-
-    /* Center align the text within the three columns below the carousel */
-    .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-    }
-    .marketing h2 {
-    font-weight: 400;
-    }
-    .marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-    }
-
-
-    /* Featurettes
-    ------------------------- */
-
-    .featurette-divider {
-    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-    }
-
-    /* Thin out the marketing headings */
-    .featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -.05rem;
-    }
-
-
-    /* RESPONSIVE CSS
-    -------------------------------------------------- */
-
-    @media (min-width: 40em) {
-    /* Bump up size of carousel content */
-    .carousel-caption p {
-        margin-bottom: 1.25rem;
-        font-size: 1.25rem;
-        line-height: 1.4;
-    }
-
-    .featurette-heading {
-        font-size: 50px;
-    }
-    }
-
-    @media (min-width: 62em) {
-    .featurette-heading {
-        margin-top: 7rem;
-    }
-    }
+<style scoped>
+/* Add your custom CSS styles for rounded squares here */
+.carousel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.habit-wrapper {
+  flex: 0 0 auto; /* Habits sollen nicht vergrößert werden */
+  margin-right: 10px; /* Abstand zwischen den Habits */
+}
+.habit {
+  position: relative;
+  border: 2px solid purple;
+  cursor: pointer;
+  transition: opacity 0.3s; /* Transition für die Opazität hinzugefügt */
+}
+.habit.active {
+  background-color: purple;
+  color: white;
+  z-index: 2;
+}
+.inactive {
+  opacity: 0.5;
+}
+.circle-abhacken {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+  margin-right: 10px; /* Abstand zwischen Kreis und Habit-Name */
+}
+.habit-content {
+  position: relative;
+}
+.habit-name {
+  margin: 0; /* Kein zusätzlicher Abstand für den Habit-Namen */
+}
+.habit-description {
+  margin-top: 5px; /* Abstand zwischen Habit-Namen und Beschreibung */
+}
 </style>
