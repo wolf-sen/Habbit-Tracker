@@ -1,5 +1,5 @@
 <script>
-import axios from "axios";
+import api from "../plugins/api.js";
 import { ref } from 'vue';
 
 export default {
@@ -7,11 +7,9 @@ export default {
 
   setup(){
     const result = ref(null)
-
-    fetch('http://localhost:3000/user')
-      .then(response => response.json())
-      .then(data => result.value = data)
-      
+    
+    api.get("/user")
+      .then(response => result.value = response.data);
     
     return { result }
   }
