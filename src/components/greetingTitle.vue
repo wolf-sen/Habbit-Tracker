@@ -1,34 +1,24 @@
 <script>
+  import { defaultUserID } from '@/configs/defaults.config';
   import { ref } from 'vue';
+  import useAPI from '@/composables/useAPI';
 
   export default {
     setup() {
-      let userName = ref("Luna")
+      let userName = ref("Human")
 
-      //nameChanger
-      const increment = () => {
-        if(userName.value = "Luna"){
-          userName.value = "Max"
-        }
-        else{
-          userName.value = "Luna"
-        }
-      }
+      useAPI.get(`/user?id=${defaultUserID}`)
+        .then(response => userName.value = (response.data[0].name));
 
-      return { userName, increment }
+      return { userName }
     }
   };
 </script>
 
 <template>
-  <div class="grid grid-cols-2 mt-10 mx-6">
     <div class="content-center">
       <h1 class="font-medium text-2xl">Hello, <span class="font-bold">{{ userName }}</span>!</h1>
     </div>
-    <button type="button" class="bg-gray-800 p-4 rounded-full place-self-end" @click="increment">
-      <div class="w-3 h-3 bg-gray-100"></div>
-    </button>
-  </div>
 </template>
 
 <style scoped>

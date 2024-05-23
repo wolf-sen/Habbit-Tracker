@@ -2,11 +2,11 @@ import axios from "axios";
 import { apiBaseURL } from "../configs/env.config.js"
 
 //create axios instance
-const api = axios.create({
+const useAPI = axios.create({
     baseURL: apiBaseURL,
     headers: {
 
     },
   });
 
-export default api;
+export default useAPI;

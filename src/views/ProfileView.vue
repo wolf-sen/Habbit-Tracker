@@ -1,6 +1,8 @@
 <script>
-import api from "../plugins/api.js";
+import greetingTitle from '/src/components/greetingTitle.vue'
+import api from "../composables/useAPI.js";
 import { ref } from 'vue';
+import GreetingTitle from '@/components/greetingTitle.vue';
 
 export default {
   name: "ProfileView",
@@ -18,8 +20,7 @@ export default {
 
 <template>
   <div class="profile">
-    <h1>This is an Profile page</h1>
-    <p>{{ result }}</p>
+    <greetingTitle />
   </div>
 </template>
 
