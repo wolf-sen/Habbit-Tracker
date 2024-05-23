@@ -1,14 +1,15 @@
 <script setup>
 import greetingTitle from '../components/greetingTitle.vue'
 import habitGrid from '/src/components/habitGrid.vue'
+import { PlusIcon } from '@heroicons/vue/24/outline'
 </script>
 
 <template>
   <main>
     <div class="grid grid-cols-2 mt-10 mx-6">
       <greetingTitle />
-      <button type="button" class="bg-gray-800 p-4 rounded-full place-self-end">
-        <div class="w-3 h-3 bg-gray-100"></div>
+      <button type="button" class="bg-indigo-900 p-1 rounded-full place-self-end">
+        <PlusIcon class="size-8 text-neutral-50 [&>path]:stroke-[3]" />
       </button>
     </div>
     <section class="mx-6 mt-10">
