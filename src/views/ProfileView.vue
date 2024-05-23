@@ -1,21 +1,20 @@
 <script>
-import greetingTitle from '/src/components/greetingTitle.vue'
+import greetingTitle from "/src/components/greetingTitle.vue";
 import api from "../composables/useAPI.js";
-import { ref } from 'vue';
-import GreetingTitle from '@/components/greetingTitle.vue';
+import { ref } from "vue";
+import GreetingTitle from "@/components/greetingTitle.vue";
 
 export default {
   name: "ProfileView",
 
-  setup(){
-    const result = ref(null)
-    
-    api.get("/user")
-      .then(response => result.value = response.data);
-    
-    return { result }
-  }
-}
+  setup() {
+    const result = ref(null);
+
+    api.get("/user").then((response) => (result.value = response.data));
+
+    return { result };
+  },
+};
 </script>
 
 <template>
@@ -24,5 +23,4 @@ export default {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

@@ -1,25 +1,28 @@
 <script>
-  import { defaultUserID } from '@/configs/defaults.config';
-  import { ref } from 'vue';
-  import useAPI from '@/composables/useAPI';
+import { defaultUserID } from "@/configs/defaults.config";
+import { ref } from "vue";
+import useAPI from "@/composables/useAPI";
 
-  export default {
-    setup() {
-      let userName = ref("Human")
+export default {
+  setup() {
+    let userName = ref("Human");
 
-      useAPI.get(`/user?id=${defaultUserID}`)
-        .then(response => userName.value = (response.data[0].name));
+    useAPI
+      .get(`/user?id=${defaultUserID}`)
+      .then((response) => (userName.value = response.data[0].name));
 
-      return { userName }
-    }
-  };
+    return { userName };
+  },
+};
 </script>
 
 <template>
-    <div class="content-center">
-      <h1 class="font-medium text-2xl">Hello, <span class="font-bold">{{ userName }}</span>!</h1>
-    </div>
+  <div class="content-center">
+    <h1 class="text-2xl font-medium">
+      Hello, <span class="font-bold">{{ userName }}</span
+      >!
+    </h1>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

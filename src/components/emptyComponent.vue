@@ -1,11 +1,9 @@
 <script>
-  export default {
-  name: "emptyComponent"
-  };
+export default {
+  name: "emptyComponent",
+};
 </script>
 
-<template>
-</template>
+<template></template>
 
-<style scoped>
-</style>
+<style scoped></style>
