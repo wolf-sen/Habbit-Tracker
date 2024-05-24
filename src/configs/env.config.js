@@ -1,6 +1,6 @@
 //enviroment configuration file;
 
-const apiBaseURL = "http://api.myhabit.maxwolf.me";
+const apiBaseURL = "https://api.myhabit.maxwolf.me";
 const appDemoContent = true;
 
 //exports of all Variables
