@@ -1,11 +1,32 @@
 <script>
 export default {
-  name: "progressCard",
+  name: 'ProgressCard',
+  props: {
+    progress: {
+      type: Number,
+      required: true,
+      default: 0,
+      validator: value => value >= 0 && value <= 100
+    }
+  },
+  computed: {
+    limitedProgress() {
+      return Math.min(this.progress, 100);
+    }
+  }
 };
 </script>
 
 <template>
-  <section></section>
+  <section class="flex flex-col w-full bg-indigo-500 rounded-card p-card gap-2">
+    <div class="flex flex-row items-end gap-2">
+        <h1 class="font-bold text-2xl font-soft">{{ progress }}%</h1>
+        <p>You're Doing Great!</p>
+    </div>
+    <div class="bg-neutral-50 h-3 w-full rounded-full">
+        <div class="bg-neutral-950 h-full rounded-full" :style="{ width: limitedProgress + '%' }"></div>
+    </div>
+  </section>
 </template>
 
 <style scoped></style>

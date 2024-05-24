@@ -36,7 +36,11 @@ import { RouterLink, RouterView } from "vue-router";
     </nav>
   </header>
 
-  <RouterView />
+  <div class="flex justify-center">
+    <div class="max-w-screen-md w-full">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <style scoped></style>
