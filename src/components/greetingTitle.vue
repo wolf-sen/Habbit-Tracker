@@ -1,15 +1,40 @@
 <script>
 import { defaultUserID } from "@/configs/defaults.config";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import useAPI from "@/composables/useAPI";
 
 export default {
-  setup() {
+  props: {
+    userID: {
+      type: Number,
+      required: true
+    }
+  },
+  setup(props) {
     let userName = ref("Human");
 
-    useAPI
-      .get(`/user?id=${defaultUserID}`)
-      .then((response) => (userName.value = response.data[0].name));
+    const fetchUserName = (id) => {
+      useAPI
+        .get(`/user?id=${id}`)
+        .then((response) => {
+          if (response.data && response.data.length > 0) {
+            userName.value = response.data[0].name;
+          } else {
+            userName.value = "Human";
+          }
+        })
+        .catch(() => {
+          userName.value = "Human";
+        });
+    };
+
+    // Fetch the user name when the component is mounted
+    fetchUserName(props.userID);
+
+    // Watch for changes in the userID prop and fetch the user name accordingly
+    watch(() => props.userID, (newUserID) => {
+      fetchUserName(newUserID);
+    });
 
     return { userName };
   },
