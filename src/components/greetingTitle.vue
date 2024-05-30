@@ -1,5 +1,5 @@
 <script>
-import { defaultUserID } from "@/configs/defaults.config";
+import { defaultUserName } from "@/configs/defaults.config";
 import { ref, watch } from "vue";
 import useAPI from "@/composables/useAPI";
 
@@ -20,11 +20,11 @@ export default {
           if (response.data && response.data.length > 0) {
             userName.value = response.data[0].name;
           } else {
-            userName.value = "Human";
+            userName.value = defaultUserName;
           }
         })
         .catch(() => {
-          userName.value = "Human";
+          userName.value = defaultUserName;
         });
     };
 

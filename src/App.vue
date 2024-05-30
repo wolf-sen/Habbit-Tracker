@@ -4,9 +4,7 @@ import navigationBar from './components/navigationBar.vue';
 </script>
 
 <template>
-  <header>
-    <navigationBar />
-  </header>
+  <navigationBar />
 
   <div class="flex justify-center">
     <div class="max-w-screen-md w-full">
