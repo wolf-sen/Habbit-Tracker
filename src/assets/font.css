@@ -1,0 +1,59 @@
+/* SF Pro Display font family */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/src/assets/font/SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/src/assets/font/SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* SF Pro Rounded font family */
+@font-face {
+  font-family: 'SF Pro Rounded';
+  src: url('/src/assets/font/SF-Pro-Rounded-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  src: url('/src/assets/font/SF-Pro-Rounded-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* SF Pro Text font family */
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('/src/assets/font/SF-Pro-Text-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('/src/assets/font/SF-Pro-Text-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* SF Mono font family */
+@font-face {
+  font-family: 'SF Mono';
+  src: url('/src/assets/font/SF-Mono-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Mono';
+  src: url('/src/assets/font/SF-Mono-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}

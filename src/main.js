@@ -1,13 +1,21 @@
-//Import all CSS Features
-import "./index.css";
+import './assets/main.css'
 
-//Initialize connection to the myHabit PostgreDB
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-//Initialize Vue & VueRouter
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
+import App from './App.vue'
+import Router from './router'
 
-const app = createApp(App);
-app.use(router);
-app.mount("#app");
+import PrimeVue from 'primevue/config'
+import Lara from '@/presets/lara'
+
+const app = createApp(App)
+
+app.use(createPinia())
+app.use(Router)
+app.use(PrimeVue, {
+  unstyled: true,
+  pt: Lara
+})
+
+app.mount('#app')
