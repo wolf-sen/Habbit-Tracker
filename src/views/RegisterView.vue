@@ -14,7 +14,7 @@ const login = () => {
   if (inputMail.value === 'email.com' && inputPassword.value === '123') {
     Cookies.set('user', { email: inputMail.value, password: inputPassword.value }, { expires: 7, sameSite: 'Strict' });
     alert('Login successful!');
-    router.push({ name: 'home' });
+    router.push({ name: 'welcome' });
   } else {
     alert('Login failed. Please check your email and password.');
   }

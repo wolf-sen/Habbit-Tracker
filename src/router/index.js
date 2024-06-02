@@ -21,6 +21,46 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     },
     {
+      path: '/create',
+      name: 'create',
+      component: () => import('../views/CreateView.vue')
+    },
+    {
+      path: '/create/routine',
+      name: 'createRoutine',
+      component: () => import('../views/CreateRoutineView.vue')
+    },
+    {
+      path: '/create/habit',
+      name: 'createHabit',
+      component: () => import('../views/CreateHabitView.vue')
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: () => import('../views/WelcomeView.vue')
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue')
+    },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: () => import('../views/StatisticsView.vue')
+    },
+    {
+      path: '/routines',
+      name: 'routines',
+      component: () => import('../views/RoutinesView.vue')
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/SettingsView.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('../views/TestView.vue')
