@@ -1,8 +1,8 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import { useThemeStore } from '@/stores/theme'
-import Cookies from 'js-cookie';
-import { onMounted } from 'vue';
+import Cookies from 'js-cookie'
+import { onMounted } from 'vue'
 const themeStore = useThemeStore()
 onMounted(() => {
   themeStore.currentTheme = Cookies.get('theme')
@@ -14,10 +14,10 @@ onMounted(() => {
     :class="themeStore.currentTheme"
     class="h-screen overflow-y-auto bg-surface text-surface-contrast transition-all"
   >
-  <div class="flex justify-center">
-    <div class="max-w-screen-md w-full">
-      <router-view />
+    <div class="flex justify-center">
+      <div class="w-full max-w-screen-md">
+        <router-view />
+      </div>
     </div>
-  </div>
   </div>
 </template>

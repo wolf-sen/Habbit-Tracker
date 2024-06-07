@@ -7,7 +7,7 @@ import Slider from 'primevue/slider'
 
 import { useThemeStore } from '@/stores/theme'
 const themeStore = useThemeStore()
-const router = useRouter();
+const router = useRouter()
 
 import Cookies from 'js-cookie'
 const CookieGet = ref(null)
@@ -28,7 +28,7 @@ const removeLogin = () => {
   console.log(Cookies.get('user'))
   Cookies.remove('user')
   console.log('Logged Out')
-  router.push({ name: 'login' });
+  router.push({ name: 'login' })
 }
 
 const value = ref(0) // initial value for the slider
@@ -49,10 +49,21 @@ const value = ref(0) // initial value for the slider
     <BeakerIcon class="m-3 size-6 text-primary hover:text-primary-hover" />
 
     <div class="flex flex-col rounded-md bg-surface-300 p-2 dark:bg-surface-700">
-      <button class="px-3 py-1 rounded-full hover:bg-indigo-500" @click="setCookie">Set Cookie</button>
-      <button class="px-3 py-1 rounded-full hover:bg-indigo-500" @click="getCookie">Get Cookie</button>
-      <button class="px-3 py-1 rounded-full hover:bg-indigo-500" @click="removeCookie">Remove Cookie</button>
-      <button class="px-3 py-1 rounded-full hover:bg-red-400 hover:text-surface-900" @click="removeLogin">LogOut</button>
+      <button class="rounded-full px-3 py-1 hover:bg-indigo-500" @click="setCookie">
+        Set Cookie
+      </button>
+      <button class="rounded-full px-3 py-1 hover:bg-indigo-500" @click="getCookie">
+        Get Cookie
+      </button>
+      <button class="rounded-full px-3 py-1 hover:bg-indigo-500" @click="removeCookie">
+        Remove Cookie
+      </button>
+      <button
+        class="rounded-full px-3 py-1 hover:bg-red-400 hover:text-surface-900"
+        @click="removeLogin"
+      >
+        LogOut
+      </button>
     </div>
   </div>
 </template>

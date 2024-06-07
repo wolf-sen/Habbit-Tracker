@@ -6,25 +6,28 @@ export default {
       type: Number,
       required: true,
       default: 0,
-      validator: value => value >= 0 && value <= 100
+      validator: (value) => value >= 0 && value <= 100
     }
   },
   computed: {
     limitedProgress() {
-      return Math.min(this.progress, 100);
+      return Math.min(this.progress, 100)
     }
   }
-};
+}
 </script>
 
 <template>
-  <section class="flex flex-col w-full bg-indigo-500 rounded-card p-card gap-2 dark:bg-indigo-600">
+  <section class="flex w-full flex-col gap-2 rounded-card bg-indigo-500 p-card dark:bg-indigo-600">
     <div class="flex flex-row items-end gap-2">
-        <h1 class="font-bold text-2xl font-soft">{{ progress }}%</h1>
-        <p>You're Doing Great!</p>
+      <h1 class="font-soft text-2xl font-bold">{{ progress }}%</h1>
+      <p>You're Doing Great!</p>
     </div>
-    <div class="bg-neutral-50 h-3 w-full rounded-full dark:bg-neutral-900">
-        <div class="bg-neutral-950 h-full rounded-full dark:bg-indigo-100" :style="{ width: limitedProgress + '%' }"></div>
+    <div class="h-3 w-full rounded-full bg-neutral-50 dark:bg-neutral-900">
+      <div
+        class="h-full rounded-full bg-neutral-950 dark:bg-indigo-100"
+        :style="{ width: limitedProgress + '%' }"
+      ></div>
     </div>
   </section>
 </template>
