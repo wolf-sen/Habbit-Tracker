@@ -6,11 +6,6 @@ import StreakCard from '@/components/streakCard.vue'
 import RewardCard from '@/components/rewardCard.vue'
 </script>
 
-
-Um sicherzustellen, dass dein Profilbildschirm scrollbar ist, wenn der Inhalt länger ist als der sichtbare Bereich, kannst du die CSS-Regeln overflow-y und max-h verwenden. Hier ist eine erweiterte Version deines Codes mit der Implementierung dieser Eigenschaften:
-
-vue
-Code kopieren
 <template>
   <div class="mx-4 mt-16 overflow-y-auto max-h-[calc(100vh-4rem)]">
     <NavigationBar />

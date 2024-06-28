@@ -4,8 +4,10 @@ import { useRouter } from 'vue-router'
 import { BeakerIcon } from '@heroicons/vue/24/solid'
 import navigationBar from '@/components/navigationBar.vue'
 import Slider from 'primevue/slider'
+import { useUserStore } from '@/stores/user'
 
 import { useThemeStore } from '@/stores/theme'
+const userStore = useUserStore()
 const themeStore = useThemeStore()
 const router = useRouter()
 
@@ -28,6 +30,7 @@ const removeLogin = () => {
   console.log(Cookies.get('user'))
   Cookies.remove('user')
   console.log('Logged Out')
+  userStore.clearUserData()
   router.push({ name: 'login' })
 }
 

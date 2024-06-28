@@ -3,6 +3,26 @@ import navigationBar from '@/components/navigationBar.vue'
 import greetingTitle from '@/components/greetingTitle.vue'
 import progressCard from '@/components/progressCard.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
+import api from '../composables/api.config';
+import { useUserStore } from '../stores/user';
+import { onMounted, ref } from 'vue';
+
+  const habits = ref([]);
+  const userStore = useUserStore();
+
+  const fetchHabits = async () => {
+    try {
+      const userId = userStore.id; // Assuming the user's ID is stored in the Pinia store
+      const response = await api.get(`/habit?user=${userId}`);
+      habits.value = response.data;
+    } catch (error) {
+      console.error('Error fetching habits:', error);
+    }
+  };
+
+  onMounted(() => {
+    fetchHabits();
+  });
 </script>
 
 <template>
@@ -35,20 +55,8 @@ import { PlusIcon } from '@heroicons/vue/24/outline'
         Todays Habits
       </p>
       <div class="flex flex-col gap-4">
-        <div class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 01
-        </div>
-        <div class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 02
-        </div>
-        <div class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 03
-        </div>
-        <div class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 04
-        </div>
-        <div class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 05
+        <div v-for="(habit, index) in habits" class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
+          Habit 0{{ i }}
         </div>
       </div>
       <div class="h-48 w-full"></div>
