@@ -12,8 +12,7 @@ import { onMounted, ref } from 'vue';
 
   const fetchHabits = async () => {
     try {
-      const userId = userStore.id; // Assuming the user's ID is stored in the Pinia store
-      const response = await api.get(`/habit?user=${userId}`);
+      const response = await api.get(`/habits?user=${userStore.id}`);
       habits.value = response.data;
     } catch (error) {
       console.error('Error fetching habits:', error);
@@ -56,7 +55,7 @@ import { onMounted, ref } from 'vue';
       </p>
       <div class="flex flex-col gap-4">
         <div v-for="(habit, index) in habits" class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Habit 0{{ i }}
+          {{ habit.name }}
         </div>
       </div>
       <div class="h-48 w-full"></div>
