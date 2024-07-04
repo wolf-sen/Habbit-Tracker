@@ -1,8 +1,8 @@
 <script setup>
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import Stepper from 'primevue/stepper';
-import StepperPanel from 'primevue/stepperpanel';
-import Button from 'primevue/button';
+import Stepper from 'primevue/stepper'
+import StepperPanel from 'primevue/stepperpanel'
+import Button from 'primevue/button'
 </script>
 
 <template>
@@ -18,39 +18,54 @@ import Button from 'primevue/button';
     </div>
 
     <Stepper orientation="vertical" class="mt-40">
-    <StepperPanel header="What are you going to do?">
+      <StepperPanel header="What are you going to do?">
         <template #content="{ nextCallback }">
-            <div class="flex flex-column bg-indigo-500">
-            </div>
-            <div class="flex pt-4 justify-content-end">
-                <Button label="Next" icon="pi pi-arrow-right" iconPos="right" @click="nextCallback" />
-            </div>
+          <div class="flex-column flex bg-indigo-500"></div>
+          <div class="justify-content-end flex pt-4">
+            <Button label="Next" icon="pi pi-arrow-right" iconPos="right" @click="nextCallback" />
+          </div>
         </template>
-    </StepperPanel>
-    <StepperPanel header="When do you want to do it?">
+      </StepperPanel>
+      <StepperPanel header="When do you want to do it?">
         <template #content="{ prevCallback, nextCallback }">
-            <div class="flex flex-column h-12rem">
-                <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">Content II</div>
+          <div class="flex-column h-12rem flex">
+            <div
+              class="surface-border border-round surface-ground justify-content-center align-items-center flex flex-auto border-2 border-dashed font-medium"
+            >
+              Content II
             </div>
-            <div class="flex pt-4 justify-content-between">
-                <Button label="Back" severity="secondary" icon="pi pi-arrow-left" @click="prevCallback" />
-                <Button label="Next" icon="pi pi-arrow-right" iconPos="right" @click="nextCallback" />
-            </div>
+          </div>
+          <div class="justify-content-between flex pt-4">
+            <Button
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+              @click="prevCallback"
+            />
+            <Button label="Next" icon="pi pi-arrow-right" iconPos="right" @click="nextCallback" />
+          </div>
         </template>
-    </StepperPanel>
-    <StepperPanel header="How often do you want to do it?">
+      </StepperPanel>
+      <StepperPanel header="How often do you want to do it?">
         <template #content="{ prevCallback }">
-            <div class="flex flex-column h-12rem">
-                <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">Content III</div>
+          <div class="flex-column h-12rem flex">
+            <div
+              class="surface-border border-round surface-ground justify-content-center align-items-center flex flex-auto border-2 border-dashed font-medium"
+            >
+              Content III
             </div>
-            <div class="flex pt-4 justify-content-start">
-                <Button label="Back" severity="secondary" icon="pi pi-arrow-left" @click="prevCallback" />
-            </div>
+          </div>
+          <div class="justify-content-start flex pt-4">
+            <Button
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+              @click="prevCallback"
+            />
+          </div>
         </template>
-    </StepperPanel>
-</Stepper>
-
-
+      </StepperPanel>
+    </Stepper>
   </div>
 </template>
 

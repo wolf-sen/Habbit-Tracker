@@ -7,7 +7,7 @@ import RewardCard from '@/components/rewardCard.vue'
 </script>
 
 <template>
-  <div class="mx-4 mt-16 overflow-y-auto max-h-[calc(100vh-4rem)]">
+  <div class="mx-4 mt-16 max-h-[calc(100vh-4rem)] overflow-y-auto">
     <NavigationBar />
     <div class="flex flex-row justify-between">
       <h1 class="content-center font-soft text-2xl font-medium">Profile</h1>
@@ -24,5 +24,4 @@ import RewardCard from '@/components/rewardCard.vue'
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

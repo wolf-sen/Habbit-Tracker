@@ -1,10 +1,15 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import { useThemeStore } from '@/stores/theme'
+import { useUserStore } from './stores/user'
 import Cookies from 'js-cookie'
 import { onMounted } from 'vue'
+
+const userStore = useUserStore()
 const themeStore = useThemeStore()
+
 onMounted(() => {
+  userStore.fetchUserData()
   themeStore.currentTheme = Cookies.get('theme')
 })
 </script>

@@ -1,31 +1,31 @@
 <script>
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/stores/user'
 
 export default {
   name: 'ProfileCard',
   computed: {
     username() {
-      const userStore = useUserStore();
-      return userStore.name;
+      const userStore = useUserStore()
+      return userStore.name
     },
     userID() {
-      const userStore = useUserStore();
-      return userStore.id;
+      const userStore = useUserStore()
+      return userStore.id
     }
   }
 }
 </script>
 
 <template>
-  <div class="bg-green-500 rounded-lg p-4 w-full mt-4">
-    <div class="flex items-center mb-4">
+  <div class="mt-4 w-full rounded-lg bg-green-500 p-4">
+    <div class="mb-4 flex items-center">
       <div class="relative">
-        <img src="@/assets/profilbild.jpg" alt="Profilbild" class="w-24 h-24 rounded-full m-2">
-        <div class="absolute inset-0 border-4 border-black rounded-full pointer-events-none"></div>
+        <img src="@/assets/profilbild.jpg" alt="Profilbild" class="m-2 h-24 w-24 rounded-full" />
+        <div class="pointer-events-none absolute inset-0 rounded-full border-4 border-black"></div>
       </div>
       <div class="ml-5">
-        <h2 class="text-4xl font-bold mb-1">{{ username }}</h2>
-        <p class="text-sm mb-2">ID: {{ userID }}</p>
+        <h2 class="mb-1 text-4xl font-bold">{{ username }}</h2>
+        <p class="mb-2 text-sm">ID: {{ userID }}</p>
       </div>
     </div>
 
@@ -46,6 +46,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-</style>
-  
+<style scoped></style>

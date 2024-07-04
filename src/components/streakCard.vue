@@ -1,16 +1,14 @@
 <script>
 export default {
-  name: 'StreakCard',
+  name: 'StreakCard'
 }
 </script>
 
 <template>
-    <div class="bg-orange-500 rounded-lg p-4 w-full mt-4 flex items-center justify-between">
-      <div class="text-black">Streak Record</div>
-      <div class="text-black text-2xl font-bold">25</div>
-    </div>
+  <div class="mt-4 flex w-full items-center justify-between rounded-lg bg-orange-500 p-4">
+    <div class="text-black">Streak Record</div>
+    <div class="text-2xl font-bold text-black">25</div>
+  </div>
 </template>
-  
-<style scoped>
-</style>
-  
+
+<style scoped></style>
