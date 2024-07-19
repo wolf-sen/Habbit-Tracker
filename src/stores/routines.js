@@ -30,7 +30,7 @@ export const useRoutinesStore = defineStore('routines', {
       return this.connections.find((connections) => connections.routineid === reqID)
     },
 
-    addRoutineHabit(habitID, routineID) {
+    async addRoutineHabit(habitID, routineID) {
       this.connections.push({habitid: habitID, routineid: routineID});
       try {
         await api.post(`/routines/connection`, {habitid: habitID, routineid: routineID}, {
@@ -44,7 +44,7 @@ export const useRoutinesStore = defineStore('routines', {
       }
     },
 
-    deleteRoutineHabit(connectionID) {
+    async deleteRoutineHabit(connectionID) {
       const index = this.connections.findIndex((connections) => connections.id === connectionID);
       this.connections.splice(index, 1);
       try {

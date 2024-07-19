@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { computed } from 'vue'
 import { useHabitsStore } from '@/stores/habits'
 import navigationBar from '@/components/navigationBar.vue'
 import greetingTitle from '@/components/greetingTitle.vue'
@@ -10,6 +10,7 @@ import { PlusIcon } from '@heroicons/vue/24/outline'
 
 
 const habitsStore = useHabitsStore()
+const progress = computed(() => habitsStore.habitProgress())
 const habits = computed(() => habitsStore.notDaily)
 const dailys = computed(() => habitsStore.daily)
 
@@ -25,7 +26,7 @@ const dailys = computed(() => habitsStore.daily)
           <PlusIcon class="size-6 stroke-[3px] text-surface" />
         </RouterLink>
       </div>
-      <progressCard progress="50" />
+      <progressCard progress="{{ progress }}" />
 
 
       <div v-if="!habits.length && !dailys.length"
