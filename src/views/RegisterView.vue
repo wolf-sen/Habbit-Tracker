@@ -21,7 +21,7 @@ const register = async () => {
       name: inputName.value,
       lastname: inputLastName.value,
       email: inputMail.value,
-      profilePicture: 'usericon_1', // Default profile picture
+      profilePicture: 1, // Default profile picture
       password: inputPassword.value
     }
 

@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed bottom-4 left-10 right-10 flex items-center justify-between rounded-full bg-neutral-900 p-2 shadow-lg"
+    class="fixed bottom-4 left-10 right-10 flex items-center justify-between rounded-full bg-surface-900 p-2 shadow-lg"
   >
     <RouterLink to="/" class="flex flex-col items-center text-white">
       <HomeIcon class="size-8" />

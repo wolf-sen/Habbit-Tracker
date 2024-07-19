@@ -1,27 +1,18 @@
 <script setup>
+import { ref, onMounted, computed } from 'vue'
+import { useHabitsStore } from '@/stores/habits'
 import navigationBar from '@/components/navigationBar.vue'
 import greetingTitle from '@/components/greetingTitle.vue'
 import progressCard from '@/components/progressCard.vue'
+import habitItem from '@/components/habitItem.vue'
+import dailyItem from '@/components/dailyItem.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
-import api from '../composables/api.config'
-import { useUserStore } from '../stores/user'
-import { onMounted, ref } from 'vue'
 
-const habits = ref([])
-const userStore = useUserStore()
 
-const fetchHabits = async () => {
-  try {
-    const response = await api.get(`/habits?user=${userStore.id}`)
-    habits.value = response.data
-  } catch (error) {
-    console.error('Error fetching habits:', error)
-  }
-}
+const habitsStore = useHabitsStore()
+const habits = computed(() => habitsStore.notDaily)
+const dailys = computed(() => habitsStore.daily)
 
-onMounted(() => {
-  fetchHabits()
-})
 </script>
 
 <template>
@@ -35,31 +26,33 @@ onMounted(() => {
         </RouterLink>
       </div>
       <progressCard progress="50" />
-      <p class="mb-[-0.6rem] mt-4 font-bold text-surface-600 dark:text-surface-400">Daily Habits</p>
-      <div class="carousel snap-mandatory gap-4 pr-0 overflow-visible">
-        <div class="carousel-item h-48 w-36 rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Daily Habit 01
-        </div>
-        <div class="carousel-item h-48 w-36 rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Daily Habit 02
-        </div>
-        <div class="carousel-item h-48 w-36 rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Daily Habit 03
-        </div>
-        <div class="carousel-item h-48 w-36 rounded-card bg-surface-400 p-card dark:bg-surface-700">
-          Daily Habit 04
-        </div>
+
+
+      <div v-if="!habits.length && !dailys.length"
+        class="flex flex-col font-soft font-bold text-lg gap-4 items-center">
+        <p class="mb-[-0.6rem] mt-32 font-bold text-center text-surface-600 dark:text-surface-400">
+          This Seems Quite Empty :( <br> Try creating a Habit!
+        </p>
+        <RouterLink
+          to="/create/habit"
+          class="w-32 rounded-full bg-primary px-3 py-1 hover:bg-primary-hover"
+        >
+          <span class="font-bold font-soft text-lg text-surface">Create Habit</span>
+        </RouterLink>
       </div>
-      <p class="mb-[-0.6rem] mt-4 font-bold text-surface-600 dark:text-surface-400">
+
+
+      <p v-if="dailys.length" class="mb-[-0.6rem] mt-4 font-bold text-surface-600 dark:text-surface-400">Daily Habits</p>
+      <div class="carousel snap-mandatory gap-4 pr-0 overflow-visible">
+        <dailyItem v-for="(habit, index) in dailys" :key="habit.id" :habit="habit" />
+      </div>
+
+      
+      <p v-if="habits.length" class="mb-[-0.6rem] mt-4 font-bold text-surface-600 dark:text-surface-400">
         Todays Habits
       </p>
       <div class="flex flex-col gap-4">
-        <div
-          v-for="(habit, index) in habits"
-          class="h-24 w-full rounded-card bg-surface-400 p-card dark:bg-surface-700"
-        >
-          {{ habit.name }}
-        </div>
+        <habitItem v-for="(habit, index) in habits" :key="habit.id" :habit="habit"/>
       </div>
       <div class="h-48 w-full"></div>
     </section>

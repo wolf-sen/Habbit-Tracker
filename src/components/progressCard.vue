@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <section class="flex w-full flex-col gap-2 rounded-card bg-indigo-500 p-card dark:bg-indigo-600">
+  <section class="flex w-full flex-col gap-2 rounded-card bg-primary p-card">
     <div class="flex flex-row items-end gap-2">
       <h1 class="font-soft text-2xl font-bold">{{ progress }}%</h1>
       <p>You're Doing Great!</p>
