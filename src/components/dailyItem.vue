@@ -60,7 +60,7 @@ const habitCompletion = () => {
     class="flex flex-col w-32 gap-2 rounded-card p-card items-center"
     @click="handleClick">
     <habitIcon :variant="props.habit.icon" :size="'lg'"/>
-    <div class="flex flex-col items-start">
+    <div class="flex flex-col w-full items-start">
       <p :class="titleState" class="text-lg font-bold font-soft">{{ props.habit.name }}</p>
       <p class="bg-surface-700 dark:bg-green-400 px-3 text-white dark:text-black rounded-full">{{ props.habit.tag }}</p>
     </div>

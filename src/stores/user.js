@@ -10,9 +10,13 @@ export const useUserStore = defineStore('user', {
     profilePicture: '',
     creationDate: '',
     mail: '',
-    theme: ''
+    theme: '',
+    mood: ''
   }),
   getters: {
+    streak() {
+      return 10;
+    }
   },
   actions: {
     setUserData(userData) {
@@ -33,13 +37,48 @@ export const useUserStore = defineStore('user', {
       this.mail = ''
     },
 
-    profilePicturePath() {
-      console.log(this.profilePicture)
-      switch (this.profilePicture) {
-        case  1: return "@/assets/profiles/blue.png"
-        case '2':
-        case '3':
-        
+    async setProfilePicture(selectedPicture) {
+      try {
+        this.profilePicture = selectedPicture;
+
+        const payload = {
+          id: this.id,
+          profilePicture: this.profilePicture
+        };
+    
+        await api.post(`/users/picture`, payload, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      } catch (error) {
+        console.error('Error updating profile picture:', error);
+      }
+    },
+
+    async addMoodEntry(mood) {
+      try {
+        const payload = {
+          userid: this.id,
+          mood: mood
+        };
+        const response = await api.post(`/users/mood`, payload, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        this.mood.push(response.data[0]);
+      } catch (error) {
+        console.error('Error adding mood entry:', error);
+      }
+    },
+
+    async fetchUserMood () {
+      try {
+        const response = await api.get(`/users/mood?user=${Cookies.get('user')}`)
+        this.mood = response.data
+      } catch (error) {
+        console.error('Error fetching user mood:', error)
       }
     },
 
@@ -55,23 +94,19 @@ export const useUserStore = defineStore('user', {
 
     async toggleTheme() {
       try {
-        // Toggle the theme
         this.theme = (this.theme === 'light') ? 'dark' : 'light';
     
-        // Construct the payload
         const payload = {
           id: this.id,
           theme: this.theme
         };
     
-        // Execute the PUT request
         await api.post(`/users/theme`, payload, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
 
-        console.log 
       } catch (error) {
         console.error('Error updating Theme:', error);
       }

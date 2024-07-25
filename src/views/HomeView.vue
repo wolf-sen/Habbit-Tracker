@@ -26,7 +26,7 @@ const dailys = computed(() => habitsStore.daily)
           <PlusIcon class="size-6 stroke-[3px] text-surface" />
         </RouterLink>
       </div>
-      <progressCard progress="{{ progress }}" />
+      <progressCard/>
 
 
       <div v-if="!habits.length && !dailys.length"

@@ -41,8 +41,9 @@ const confirmCreate= () => {
     userid: userStore.id,
     name: nameSelected.value,
     schedule: scheduleSelected.value.code
-  })
-  router.push({ name: 'routines' });
+  },
+  habitsSelected.value)
+  router.push({ name: 'home' });
 }
 
 </script>

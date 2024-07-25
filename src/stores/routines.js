@@ -8,17 +8,37 @@ export const useRoutinesStore = defineStore('routines', {
     connections: []
   }),
   actions: {
-    async createRoutine(payload) {
-      this.routines.push(payload)
+    async createRoutine(payload, habits) {
+      let response;
       try {
-        await api.post(`/routines/new`, payload, {
+        response = await api.post(`/routines/new`, payload, {
           headers: {
             'Content-Type': 'application/json'
           }
         })
+        console.log(response.data[0])
+        this.routines.push(response.data[0])
       }
       catch (error) {
         console.error('Error saving new routine:', error)
+      }
+      for (let i = 0; i < habits.length; i++) {
+        console.log(habits[i].id, response.data[0].id)
+        this.addRoutineConection(habits[i].id, response.data[0].id)
+      }
+    },
+
+    async addRoutineConection(habitID, routineID) {
+      try {
+        const response = await api.post(`/routines/connection`, {habitid: habitID, routineid: routineID}, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        this.connections.push(response.data[0])
+      }
+      catch (error) {
+        console.error('Error adding connection:', error)
       }
     },
 
@@ -27,21 +47,7 @@ export const useRoutinesStore = defineStore('routines', {
     },
 
     getRoutineHabits(reqID) {
-      return this.connections.find((connections) => connections.routineid === reqID)
-    },
-
-    async addRoutineHabit(habitID, routineID) {
-      this.connections.push({habitid: habitID, routineid: routineID});
-      try {
-        await api.post(`/routines/connection`, {habitid: habitID, routineid: routineID}, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-      }
-      catch (error) {
-        console.error('Error adding connection:', error)
-      }
+      return this.connections.filter((connections) => connections.routineid === reqID)
     },
 
     async deleteRoutineHabit(connectionID) {
@@ -58,6 +64,16 @@ export const useRoutinesStore = defineStore('routines', {
       try {
         const response = await api.get(`/routines?user=${Cookies.get('user')}`)
         this.routines = response.data
+      } catch (error) {
+        console.error('Error fetching routines:', error)
+      }
+      try {
+        for (let i = 0; i < this.routines.length; i++) {
+          const response = await api.get(`/routines/connection?routine=${this.routines[i].id}`)
+          if (Array.isArray(response.data)){
+          this.connections.push(...response.data)
+          }
+        }
       } catch (error) {
         console.error('Error fetching routines:', error)
       }

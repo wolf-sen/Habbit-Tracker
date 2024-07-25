@@ -31,7 +31,7 @@ const register = async () => {
       alert('Registration successful!')
       Cookies.set('user', response.data.id, { expires: 1, sameSite: 'Strict' })
       userStore.setUserData(userData)
-      router.push({ name: 'home' })
+      router.push({ name: 'welcome' })
     } else {
       alert('Registration failed. Please try again.')
     }

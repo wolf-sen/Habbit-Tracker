@@ -25,7 +25,7 @@ const routines = computed(() => routinesStore.routines)
           This Seems Quite Empty :( <br> Try creating your first Routine!
         </p>
         <RouterLink
-          to="/create/habit"
+          to="/create/routine"
           class="w-38 rounded-full bg-primary px-3 py-1 hover:bg-primary-hover"
         >
           <span class="font-bold font-soft text-lg text-surface">Create Routine</span>
