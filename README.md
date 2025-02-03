@@ -1,5 +1,5 @@
 # myHabitApp
-This is a new Vue.js + Bootstrap Project.
+This is a new Vue.js + TailwindCSSProject.
 
 
 ## Documentation WIP
